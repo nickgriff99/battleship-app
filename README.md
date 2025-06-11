@@ -262,16 +262,16 @@ When you first run your terminal game you should be greeted with the following t
 ### How many Ships Per Board Size
 
 4X4:
- - [ ] 1 large
- - [ ] 1 small
+ - [x] 1 large
+ - [x] 1 small
 
 5X5 
- - [ ] 1 large
- - [ ] 2 small
+ - [x] 1 large
+ - [x] 2 small
 
 6X6
- - [ ] 2 large
- - [ ] 2 small
+ - [x] 2 large
+ - [x] 2 small
  
 ### Greeting Menu
 
@@ -280,30 +280,30 @@ Welcome to Battleship 🚢
 choose a Board Size
 ```
 
-- [ ] On this menu you should be able to either select a size, or type in 4, 5 or 6 in order to make the board a
+- [x] On this menu you should be able to either select a size, or type in 4, 5 or 6 in order to make the board a
 
-- [ ] 4X4 like this:
+- [x] 4X4 like this:
 
       ![blank-4x4.png](./images/blank-4x4.png)
 
-- [ ] 5X5 like this:
+- [x] 5X5 like this:
 
 ![blank-5x5.png](./images/blank-5x5.png)
 
-- [ ] 6X6 like this:
+- [x] 6X6 like this:
 
   ![blank-6x6.png](./images/blank-6x6.png)
 
 ### Ship Placement
 
-- [ ] Ships should be randomly placed
-- [ ] Ships cannot overlap each other
+- [x] Ships should be randomly placed
+- [x] Ships cannot overlap each other
   - _note: your `debug` flag should help with getting this part correct_
-- [ ] Ships must be placed within the bounds of the board
+- [x] Ships must be placed within the bounds of the board
 
 ### Rendering
 
-- [ ] The board must always print according to the [The Details found in the board section](#the-board)
+- [x] The board must always print according to the [The Details found in the board section](#the-board)
 
 ### Game Flow
 
