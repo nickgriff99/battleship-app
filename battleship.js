@@ -1,6 +1,8 @@
+const readlineSync = require('readline-sync');
+
 const boardFourByFour = generateRandomBoard(4, 4, [
   { type: "large", id: 1, count: 1 }, // Large ship
-  { type: "small", id: 2, count: 2 },  // Two small ships
+  { type: "small", id: 2, count: 1 },  // Small ships
 ]);
 
 const boardFiveByFive = generateRandomBoard(5, 5, [
@@ -9,20 +11,23 @@ const boardFiveByFive = generateRandomBoard(5, 5, [
 ]);
 
 const boardSixBySix = generateRandomBoard(6, 6, [
-  { type: "large", id: 1, count: 1 }, // Large ship
-  { type: "small", id: 2, count: 3 }, // Three small ships
+  { type: "large", id: 1, count: 2 }, // Two large ships
+  { type: "small", id: 2, count: 2 }, // Two small ships
 ]);
 
 
 function printBoard(board, debug = false) {
+  // Render the board in a table format
   const renderMap = {
     large: "🔵",
     small: "🟠",
     empty: "❗",
     hidden: "-"
   };
-  const rowLabels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  // If debug mode, show hits
+  const rowLabels = "ABCDEF";
   const table = {};
+  // Create the header row
   for (let row = 0; row < board.length; row++) {
     table[rowLabels[row]] = board[row].map(cell =>
       (debug || cell.hit) ? renderMap[cell.type] : renderMap.hidden
@@ -75,4 +80,42 @@ function generateRandomBoard(rows, columns, ships) {
   return board;
 }
 
-printBoard(boardSixBySix, true);
+// printBoard(boardFourByFour, true);
+// printBoard(boardFiveByFive, true);
+// printBoard(boardSixBySix, true);
+
+function showGreetingMenu() {
+  console.log("Welcome to Battleship 🚢");
+  console.log("Choose a board size:");
+  console.log("\n1. 4x4 Board \n2. 5x5 Board \n3. 6x6 Board\n0. Exit\n");
+  let size;
+  while (true) {
+    const input = readlineSync.question("Enter Board Size (4, 5, 6, 0): ");
+    if (input === "4" || input === "5" || input === "6") {
+      size = parseInt(input, 10);
+      break;
+    } else if (input === "0") {
+      console.log("Goodbye!");
+      process.exit();
+    } else {
+      console.log("Invalid input. Please enter 4, 5, or 6.");
+    }
+  }
+  return size;
+}
+
+function startGame() {
+  const selectedBoardSize = showGreetingMenu();
+  console.log(`You selected a ${selectedBoardSize}x${selectedBoardSize} board.`);
+  if (selectedBoardSize === 4) {
+    printBoard(boardFourByFour);
+  } else if (selectedBoardSize === 5) {
+    printBoard(boardFiveByFive);
+  } else if (selectedBoardSize === 6) {
+    printBoard(boardSixBySix);
+  }
+}
+
+
+
+startGame();
