@@ -88,7 +88,9 @@ function showGreetingMenu() {
   console.log("Welcome to Battleship 🚢");
   console.log("Choose a board size:");
   console.log("\n1. 4x4 Board \n2. 5x5 Board \n3. 6x6 Board\n0. Exit\n");
+  // Prompt the user for a board size until a valid input is given
   let size;
+  // Use readline-sync to get input
   while (true) {
     const input = readlineSync.question("Enter Board Size (4, 5, 6, 0): ");
     if (input === "4" || input === "5" || input === "6") {
@@ -105,8 +107,10 @@ function showGreetingMenu() {
 }
 
 function startGame() {
+  // Start the game by showing the greeting menu and printing the selected board
   const selectedBoardSize = showGreetingMenu();
   console.log(`You selected a ${selectedBoardSize}x${selectedBoardSize} board.`);
+  // Print the board based on the selected size
   if (selectedBoardSize === 4) {
     printBoard(boardFourByFour);
   } else if (selectedBoardSize === 5) {
