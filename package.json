@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "start-game": "node battleship.js",
+    "debug-game": "node battleship.js --debug"
+  },
   "dependencies": {
     "readline-sync": "^1.4.10"
   }
