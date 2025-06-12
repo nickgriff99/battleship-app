@@ -1,5 +1,7 @@
 const readlineSync = require('readline-sync');
 
+const debug = process.argv.includes('--debug');
+
 const boardFourByFour = generateRandomBoard(4, 4, [
   { type: "large", id: 1, count: 1 }, // Large ship
   { type: "small", id: 2, count: 1 },  // Small ships
@@ -16,7 +18,7 @@ const boardSixBySix = generateRandomBoard(6, 6, [
 ]);
 
 
-function printBoard(board, debug = false) {
+function printBoard(board) {
   // Render the board in a table format
   const renderMap = {
     large: "🔵",
@@ -109,17 +111,68 @@ function showGreetingMenu() {
 function startGame() {
   // Start the game by showing the greeting menu and printing the selected board
   const selectedBoardSize = showGreetingMenu();
+  console.clear(); // Clear the console for a fresh view
   console.log(`You selected a ${selectedBoardSize}x${selectedBoardSize} board.`);
   // Print the board based on the selected size
   if (selectedBoardSize === 4) {
-    printBoard(boardFourByFour);
+    board = boardFourByFour;
   } else if (selectedBoardSize === 5) {
-    printBoard(boardFiveByFive);
+    board = boardFiveByFive;
   } else if (selectedBoardSize === 6) {
-    printBoard(boardSixBySix);
+    board = boardSixBySix;
+  }
+  printBoard(board, debug);
+  const rowLabels = "ABCDEF";
+  // Initialize the game loop
+  // Allow the user to guess until all ships are sunk or they exit
+  while (true) {
+    const guess = readlineSync.question(
+      `Enter your guess (e.g., A1, B2, C3) or type 'exit' to quit: `
+    ).toUpperCase();
+    console.clear(); // Clear the console for a fresh view
+    // Check if the user wants to exit
+    if (guess === "EXIT") {
+      console.log("Thanks for playing! Goodbye!");
+      break;
+    }
+    const row = rowLabels.indexOf(guess[0]);
+    const col = parseInt(guess[1], 10) - 1;
+    // Validate the guess
+    if (
+      row < 0 ||
+      row >= selectedBoardSize ||
+      isNaN(col) ||
+      col < 0 ||
+      col >= selectedBoardSize
+    ) {
+      printBoard(board, debug);
+      console.log("Invalid guess. Please enter a valid coordinate (e.g., A1, B2, C3).");
+      continue;
+    }
+    // Check if the guessed cell has already been hit
+    if (board[row][col].hit) {
+      printBoard(board, debug);
+      console.log("You already guessed that spot. Try again.");
+      continue;
+    } else {
+      board[row][col].hit = true; // This works for both ship and empty cells
+    }
+    printBoard(board, debug);
+    // Check if all ships are sunk
+    const allShipsSunk = board.flat().filter(cell => cell.type === "large" || cell.type === "small").every(cell => cell.hit);
+    if (allShipsSunk) {
+      console.log(`========
+        __   _______ _   _   _    _ _____ _   _
+        \\ \\ / /  _  | | | | | |  | |_   _| \\ | |
+         \\ V /| | | | | | | | |  | | | | |  \\| |
+          \\ / | | | | | | | | |/\\| | | | | . ' |
+          | | \\ \\_/ / |_| | \\  /\\  /_| |_| |\\  |
+          \\_/  \\___/ \\___/   \\/  \\/ \\___/\\_| \\_/
+        ========`
+      );
+      break;
+    }
   }
 }
-
-
 
 startGame();
