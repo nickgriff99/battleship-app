@@ -307,24 +307,24 @@ choose a Board Size
 
 ### Game Flow
 
-- [ ] Each Turn we should see this screen:
-  - [ ] The board is printed
-  - [ ] Underneath we can see `Make a guess eg.. A1, B2, etc...`
+- [x] Each Turn we should see this screen:
+  - [x] The board is printed
+  - [x] Underneath we can see `Make a guess eg.. A1, B2, etc...`
         
         ![full-guess-screen.png](./images/full-guess-screen.png)
         
-- [ ] In between guesses, you should clear the console so that way you are only looking at the fresh information and not the information from the previous turn. This can be accomplished with...
+- [x] In between guesses, you should clear the console so that way you are only looking at the fresh information and not the information from the previous turn. This can be accomplished with...
 
 ```js
 console.clear();
 ```
 
-- [ ] If the user types in an Invalid input, the game should say "Sorry but that is not a valid input", or something along those lines. But most importantly, IT SHOULD NOT CRASH and if it does then on this assignment...
+- [x] If the user types in an Invalid input, the game should say "Sorry but that is not a valid input", or something along those lines. But most importantly, IT SHOULD NOT CRASH and if it does then on this assignment...
 
   ![you shall not pass gif](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGh2Nm91NmdncGlsenBnZWVicXppN2wyenhoYzk3ODd4c21lN3luNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8abAbOrQ9rvLG/giphy.gif)
 
-- [ ] When the user guesses, you're board must be updated correctly
-- [ ] When the user guesses all of the ships on the board then you will render this ascii art and then the program can exit:
+- [x] When the user guesses, you're board must be updated correctly
+- [x] When the user guesses all of the ships on the board then you will render this ascii art and then the program can exit:
 
 ```txt
 ========
@@ -339,15 +339,15 @@ __   _______ _   _   _    _ _____ _   _
 
 _note: the easiest way to get this into a log statement is to use [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), but you will need to escape backslashes_
 
-- [ ] Try your best to keep your code clean
-  - [ ] Make helper functions for yourself
-  - [ ] Keep the script that runs the game in one main file
-  - [ ] Keep your helper functions in a different, or maybe many different files
-  - [ ] It's ok if it's not perfect, but we (The Instructors) have the right to reject ugly code, that's ok though, every rejection is usually a really good learning experience anyways :)
+- [x] Try your best to keep your code clean
+  - [x] Make helper functions for yourself
+  - [x] Keep the script that runs the game in one main file
+  - [x] Keep your helper functions in a different, or maybe many different files
+  - [x] It's ok if it's not perfect, but we (The Instructors) have the right to reject ugly code, that's ok though, every rejection is usually a really good learning experience anyways :)
 
 ### Scripts
 
-- [ ] Provide a `npm run start-game` or a `bun run start-game` script so that way we can play your game easily by pulling your project. This script should basically run the file that starts the game
+- [x] Provide a `npm run start-game` or a `bun run start-game` script so that way we can play your game easily by pulling your project. This script should basically run the file that starts the game
 
 ### A Note on Technology
 
