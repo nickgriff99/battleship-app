@@ -161,7 +161,8 @@ function startGame() {
     // Check if all ships are sunk
     const allShipsSunk = board.flat().filter(cell => cell.type === "large" || cell.type === "small").every(cell => cell.hit);
     if (allShipsSunk) {
-      console.log(`========
+      console.log(`
+        ========
         __   _______ _   _   _    _ _____ _   _
         \\ \\ / /  _  | | | | | |  | |_   _| \\ | |
          \\ V /| | | | | | | | |  | | | | |  \\| |
